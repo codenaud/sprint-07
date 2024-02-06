@@ -1,0 +1,55 @@
+// top-nav.styles
+.social-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  margin-right: 0.6rem;
+}
+.social-icon__kids {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+}
+img.social-icon__image {
+  width: 20px;
+  height: 20px;
+}
+.separator {
+  border-left: 1px solid var(--extra-color);
+  margin-left: 0.5rem;
+  margin-right: 0px;
+  height: 30px;
+}
+.logo > img {
+  height: 80px;
+}
+.login-link__text {
+  text-decoration: none;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+}
+
+.box {
+  width: 32px;
+  height: 32px;
+}
+
+.login-links > ul > li {
+  list-style: none;
+  display: inline;
+  padding-right: 1.2rem;
+  padding-left: 0px;
+  width: 32px;
+  height: 32px;
+}
+.login-links > ul {
+  margin: 0px;
+}
+.login-link__image {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.3rem;
+}

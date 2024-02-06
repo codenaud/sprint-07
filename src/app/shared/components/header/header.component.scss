@@ -1,0 +1,11 @@
+// header styles
+.header {
+  height: 180px;
+  background-color: var(--main-bg-color);
+  border-bottom: 1px solid var(--extra-color);
+  display: flex;
+  flex-direction: column;
+}
+.header__top-nav {
+  height: 140px;
+}

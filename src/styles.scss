@@ -1,1 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Roboto global import */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+:root {
+  --main-bg-color: black;
+  --primary-color: white;
+  --secondary-color: #1d1e1f;
+  --extra-color: #48494a;
+  --nav-color: #b5b7b7;
+}
+
+/* styles.scss */
+body {
+  font-family: "Roboto", sans-serif;
+  background: url("./assets/bg_body.jpeg") center center;
+}
+
+/* Global Styles */
+/* Custom Margin & Padding */
+.px-6 {
+  padding-right: 4rem;
+  padding-left: 4rem;
+}
+.px-7 {
+  padding-right: 5rem;
+  padding-left: 5rem;
+}
+.px-8 {
+  padding-right: 6rem;
+  padding-left: 6rem;
+}
+
+// X-Small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
+}
