@@ -31,6 +31,9 @@ body {
   padding-right: 6rem;
   padding-left: 6rem;
 }
+.separation {
+  border-bottom: 1px solid var(--extra-color);
+}
 
 // X-Small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
