@@ -24,18 +24,62 @@
 /* navbar toggler */
 .navbar-toggler-icon {
   display: inline-block;
-  width: 1.5em;
-  height: 1.5em;
+  width: 24px;
+  height: 24px;
   vertical-align: middle;
   background-image: url("../../../../assets/icon_burger.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
 }
+.navbar-toggler:focus,
+.navbar-toggler:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
 .navbar-toggler {
-  padding: none;
-  border: none;
+  padding: 10px !important;
+}
+.navbar-collapse.collapsing,
+.navbar-collapse.show {
+  position: relative !important;
 }
 .bg-dark {
   background-color: var(--main-bg-color) !important;
+}
+
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled),
+button:not(:disabled) {
+  cursor: pointer;
+  border: none !important;
+  outline: none !important;
+}
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) {
+}
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+}
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+  .navbar-collapse.collapsing,
+  .navbar-collapse.show {
+    position: absolute !important;
+    top: 87px;
+    left: -7px;
+    outline: none !important;
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (max-width: 1200px) {
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (max-width: 1400px) {
 }

@@ -28,6 +28,7 @@ img.social-icon__image {
   background-image: url("../../../../assets/logo_starwars.png");
   background-size: cover;
   background-position: center;
+  margin: 0px;
 }
 .login-link__text {
   text-decoration: none;
@@ -52,16 +53,46 @@ img.social-icon__image {
   height: 20px;
   margin-right: 0.3rem;
 }
+
+/* .xs = | Extra Small devices only (portrait phones) less than 576px */
+@media (min-width: 360px) and (max-width: 420px) {
+  .logo {
+    margin: 0 !important;
+  }
+}
+
 // Small devices (landscape phones, 576px and up)
-@media (max-width: 576px) {
+@media (max-width: 575.98px) {
+  .logo {
+    margin: 0 !important;
+  }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (max-width: 768px) {
+  .logo {
+    width: 233px !important;
+    height: 24px !important;
+  }
 }
 
 // Large devices (desktops, 992px and up)
 @media (max-width: 992px) {
+  .logo {
+    width: 312px;
+    height: 32px;
+    background-image: url("../../../../assets/logo_starwars_mobile.png");
+    background-size: cover;
+    background-position: center;
+    margin: 0 10rem;
+  }
+  .px-8 {
+    padding-right: 0rem;
+    padding-left: 0rem;
+  }
+  .login-links > ul {
+    padding-left: 1rem;
+  }
 }
 
 // X-Large devices (large desktops, 1200px and up)
