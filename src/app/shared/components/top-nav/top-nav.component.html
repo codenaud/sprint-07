@@ -40,8 +40,11 @@
     </div>
   </div>
   <!--  -->
-  <div class="top-nav__logo ">
-    <div class="logo"></div>
+  <div class="top-nav__logo">
+    <!-- Uso de un elemento <a> con [routerLink] para hacer que el logo sea un enlace -->
+    <a [routerLink]="['/']" routerLinkActive="router-link-active">
+      <div class="logo"></div>
+    </a>
   </div>
   <!-- d-none d-lg-flex  -->
   <div class="top-nav__login ">
@@ -59,9 +62,7 @@
             <span class="">Sign in</span>
           </a>
         </li>
-
       </ul>
     </div>
   </div>
-
 </div>

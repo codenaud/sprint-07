@@ -1,12 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-top-nav',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterOutlet, RouterLink],
   templateUrl: './top-nav.component.html',
-  styleUrl: './top-nav.component.scss'
+  styleUrl: './top-nav.component.scss',
 })
-export class TopNavComponent {
-
-}
+export class TopNavComponent {}
