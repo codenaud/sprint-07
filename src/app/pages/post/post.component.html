@@ -1,0 +1,8 @@
+@for (post of posts; track post.id) {
+<h3>{{post.id}}</h3>
+<h3>{{post.title}}</h3>
+<h3>{{post.body}}</h3>
+}
+@empty {
+<h3 style="color:red">Error</h3>
+}
