@@ -1,24 +1,24 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StarWarsService {
-  private apiUrl = 'https://swapi.dev/api';
+  private BASE_URL = 'https://swapi.dev/api';
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
-  getStarships(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/starships/`);
+  getStarships() {
+    return this.http.get(`${this.BASE_URL}/starships/`);
   }
 
-  getPilots(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/people/`); // Asumiendo que 'people' es el endpoint para pilotos
+  getPilots() {
+    return this.http.get(`${this.BASE_URL}/people/`); // Asumiendo que 'people' es el endpoint para pilotos
   }
 
-  getFilms(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/films/`);
+  getFilms() {
+    return this.http.get(`${this.BASE_URL}/films/`);
   }
 }

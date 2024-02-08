@@ -1,5 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+//starships.component
+// import { HttpClient } from '@angular/common/http'; => 00 - Extrater datos directamente sin service
 import { Component, inject, OnInit } from '@angular/core';
+import { StarWarsService } from '../../shared/api/starwars.service';
 
 @Component({
   selector: 'app-starships',
@@ -9,14 +11,17 @@ import { Component, inject, OnInit } from '@angular/core';
   styleUrl: './starships.component.scss',
 })
 export class StarshipsComponent implements OnInit {
-  http = inject(HttpClient);
+  // http = inject(HttpClient); => 01 - Extrater datos directamente sin service
+  private starwarsService = inject(StarWarsService);
   starships: any = [];
 
   ngOnInit(): void {
-    this.fetchStarships();
+    // this.fetchStarships();
+    this.loadStarships();
   }
 
-  fetchStarships() {
+  /*   => 02 - Extrater datos directamente sin service
+    fetchStarships() {
     this.http
       .get('https://swapi.dev/api/starships/')
       .subscribe((response: any) => {
@@ -28,6 +33,18 @@ export class StarshipsComponent implements OnInit {
           };
         });
       });
+  } */
+
+  loadStarships() {
+    this.starwarsService.getStarships().subscribe((response: any) => {
+      console.log(response.results); // Ahora deberías ver solo las naves estelares en la consola
+      this.starships = response.results.map((starship: any) => {
+        return {
+          ...starship,
+          id: this.extractId(starship.url), // Añadimos el ID extraído de la URL
+        };
+      });
+    });
   }
 
   extractId(url: string): string {

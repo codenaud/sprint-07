@@ -1,4 +1,9 @@
-@for (starship of starships; track starship.id) {
-<h3>{{starship.name}}</h3>
-<h3>{{starship.model}}</h3>
-}
+<!-- starchip.html -->
+<div class="container">
+  @for (starship of starships; track starship.id) {
+  <div class="mb-5 starship-card" style="background-color:#212529; color:#ccc;">
+    <h3>{{starship.name}}</h3>
+    <h4>{{starship.model}}</h4>
+  </div>
+  }
+</div>

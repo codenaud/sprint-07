@@ -1,1 +1,8 @@
-<p>pilots works!</p>
+@for (pilot of pilots; track pilot.id) {
+<h3>{{pilot.id}}</h3>
+<h3>{{pilot.title}}</h3>
+<h3>{{pilot.body}}</h3>
+}
+@empty {
+<h3 style="color:red">Error</h3>
+}
