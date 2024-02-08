@@ -11,29 +11,12 @@ import { StarWarsService } from '../../shared/api/starwars.service';
   styleUrl: './starships.component.scss',
 })
 export class StarshipsComponent implements OnInit {
-  // http = inject(HttpClient); => 01 - Extrater datos directamente sin service
   private starwarsService = inject(StarWarsService);
   starships: any = [];
 
   ngOnInit(): void {
-    // this.fetchStarships();
     this.loadStarships();
   }
-
-  /*   => 02 - Extrater datos directamente sin service
-    fetchStarships() {
-    this.http
-      .get('https://swapi.dev/api/starships/')
-      .subscribe((response: any) => {
-        console.log(response.results); // Ahora deberías ver solo las naves estelares en la consola
-        this.starships = response.results.map((starship: any) => {
-          return {
-            ...starship,
-            id: this.extractId(starship.url), // Añadimos el ID extraído de la URL
-          };
-        });
-      });
-  } */
 
   loadStarships() {
     this.starwarsService.getStarships().subscribe((response: any) => {
@@ -62,7 +45,7 @@ export class StarshipsComponent implements OnInit {
   */
 
 /*
-      Ejemplo de post
+      Ejemplo de starship
       -------------------
       {
             "name": "CR90 corvette",

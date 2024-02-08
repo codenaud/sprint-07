@@ -1,8 +1,9 @@
-@for (pilot of pilots; track pilot.id) {
-<h3>{{pilot.id}}</h3>
-<h3>{{pilot.title}}</h3>
-<h3>{{pilot.body}}</h3>
-}
-@empty {
-<h3 style="color:red">Error</h3>
-}
+<!-- pilot.html -->
+<div class="container">
+  @for (pilot of pilots; track pilot.id) {
+  <div class="mb-5 starship-card" style="background-color:#212529; color:#ccc;">
+    <h3>Name: {{pilot.name}}</h3>
+    <h4>Homeworld: {{pilot.homeworldName}}</h4>
+  </div>
+  }
+</div>

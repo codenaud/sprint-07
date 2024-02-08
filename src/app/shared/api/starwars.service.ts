@@ -14,8 +14,14 @@ export class StarWarsService {
     return this.http.get(`${this.BASE_URL}/starships/`);
   }
 
+  // Asumiendo que 'people' es el endpoint para pilotos
   getPilots() {
-    return this.http.get(`${this.BASE_URL}/people/`); // Asumiendo que 'people' es el endpoint para pilotos
+    return this.http.get(`${this.BASE_URL}/people/`);
+  }
+
+  // Obtener los planetas de los pilotos que provienen de otra url => https://swapi.dev/api/planets/1/
+  getPlanetByUrl(url: string) {
+    return this.http.get(url);
   }
 
   getFilms() {

@@ -1,1 +1,10 @@
-<p>films works!</p>
+<!-- pilot.html -->
+<div class="container">
+  @for (film of films; track film.id) {
+  <div class="mb-5 starship-card" style="background-color:#212529; color:#ccc;">
+    <h3>Title {{film.title}}</h3>
+    <h4>Episode {{film.episode_id}}</h4>
+    <h4>Director {{film.director}}</h4>
+  </div>
+  }
+</div>

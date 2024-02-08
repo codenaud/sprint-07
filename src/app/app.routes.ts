@@ -10,7 +10,7 @@ export const routes: Routes = [
   { path: 'starships', component: StarshipsComponent },
   { path: 'films', component: FilmsComponent },
   { path: 'pilots', component: PilotsComponent },
-  { path: 'posts', component: PostComponent },
+  // { path: 'posts', component: PostComponent },
   // Considera añadir una ruta para manejar rutas no encontradas
   // { path: '**', component: PageNotFoundComponent },
 ];
