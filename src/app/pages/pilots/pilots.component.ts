@@ -2,7 +2,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { StarWarsService } from '../../shared/api/starwars.service';
 import { forkJoin, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pilots',
@@ -20,28 +20,43 @@ export class PilotsComponent implements OnInit {
   }
 
   loadPilots() {
-    this.starwarsService.getPilots().subscribe((response: any) => {
-      const pilotsWithPlanets = response.results.map((pilot: any) => {
-        return this.starwarsService.getPlanetByUrl(pilot.homeworld).pipe(
-          map((planet: any) => ({
-            ...pilot,
-            homeworldName: planet.name, // Agregamos el nombre del planeta
-            id: this.extractId(pilot.url),
-          })),
-          catchError((error) => {
-            console.error('Error fetching planet details:', error);
-            return of({
-              ...pilot,
-              homeworldName: 'Unknown',
-              id: this.extractId(pilot.url),
-            });
-          })
-        );
-      });
-      forkJoin(pilotsWithPlanets).subscribe((completedPilots) => {
+    this.starwarsService
+      .getPilots()
+      .pipe(
+        switchMap((response: any) => {
+          const pilotsObservables = response.results.map((pilot: any) =>
+            this.starwarsService.getPlanetByUrl(pilot.homeworld).pipe(
+              map((planet: any) => ({
+                ...pilot,
+                homeworldName: planet.name,
+                id: this.extractId(pilot.url),
+                imageUrl: this.starwarsService.getCharacterImageUrl(
+                  this.extractId(pilot.url)
+                ),
+              })),
+              catchError(() =>
+                of({
+                  ...pilot,
+                  homeworldName: 'Unknown',
+                  id: this.extractId(pilot.url),
+                  imageUrl: this.starwarsService.getCharacterImageUrl(
+                    this.extractId(pilot.url)
+                  ),
+                })
+              )
+            )
+          );
+          return forkJoin(pilotsObservables);
+        })
+      )
+      .subscribe((completedPilots) => {
         this.pilots = completedPilots;
       });
-    });
+  }
+
+  onImageError(event: any) {
+    event.target.src =
+      'https://starwars-visualguide.com/assets/img/big-placeholder.jpg';
   }
 
   extractId(url: string): string {

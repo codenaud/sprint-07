@@ -1,9 +1,11 @@
-<!-- pilot.html -->
+<!-- pilots.component.html -->
 <div class="container">
   @for (pilot of pilots; track pilot.id) {
-  <div class="mb-5 starship-card" style="background-color:#212529; color:#ccc;">
+  <div class="mb-5 pilot-card" style="background-color:#212529; color:#ccc;">
     <h3>Name: {{pilot.name}}</h3>
     <h4>Homeworld: {{pilot.homeworldName}}</h4>
+    <img [src]="pilot.imageUrl" (error)="onImageError($event)" alt="{{pilot.name}}"
+      style="width: 100%; max-width: 300px;">
   </div>
   }
 </div>

@@ -21,7 +21,7 @@ export class FilmsComponent implements OnInit {
     this.starwarsService.getFilms().subscribe((response: any) => {
       this.films = response.results.map((film: any) => {
         const id = this.extractId(film.url); // Extrae el ID de la URL
-        const imageUrl = `https://starwars-visualguide.com/assets/img/films/${id}.jpg`; // Construye la URL de la imagen
+        const imageUrl = this.starwarsService.getFilmsImageUrl(id); // Extraer la imágen
         return {
           ...film,
           id: id,

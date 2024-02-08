@@ -21,7 +21,7 @@ export class StarshipsComponent implements OnInit {
     this.starwarsService.getStarships().subscribe((response: any) => {
       this.starships = response.results.map((starship: any) => {
         const id = this.extractId(starship.url); // Extraes el ID
-        const imageUrl = `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`; // Construyes la URL de la imagen
+        const imageUrl = this.starwarsService.getStarshipsImageUrl(id); // Extraer la imágen
         return {
           ...starship,
           id: id,
