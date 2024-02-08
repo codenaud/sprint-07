@@ -1,10 +1,12 @@
-<!-- pilot.html -->
+<!-- films.component.html -->
 <div class="container">
   @for (film of films; track film.id) {
-  <div class="mb-5 starship-card" style="background-color:#212529; color:#ccc;">
-    <h3>Title {{film.title}}</h3>
-    <h4>Episode {{film.episode_id}}</h4>
-    <h4>Director {{film.director}}</h4>
+  <div class="mb-5 film-card" style="background-color:#212529; color:#ccc;">
+    <h3>Title: {{film.title}}</h3>
+    <h4>Episode: {{film.episode_id}}</h4>
+    <h4>Director: {{film.director}}</h4>
+    <img [src]="film.imageUrl" (error)="onImageError($event)" alt="{{film.name}}"
+      style="width: 100%; max-width: 300px;">
   </div>
   }
 </div>

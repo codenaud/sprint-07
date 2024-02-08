@@ -1,7 +1,9 @@
-<!-- starchip.html -->
+<!-- starships.component.html -->
 <div class="container">
   @for (starship of starships; track starship.id) {
   <div class="mb-5 starship-card" style="background-color:#212529; color:#ccc;">
+    <img [src]="starship.imageUrl" (error)="onImageError($event)" alt="{{starship.name}}"
+      style="width: 100%; max-width: 300px;">
     <h3>{{starship.name}}</h3>
     <h4>{{starship.model}}</h4>
   </div>

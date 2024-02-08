@@ -1,5 +1,4 @@
 //starships.component
-// import { HttpClient } from '@angular/common/http'; => 00 - Extrater datos directamente sin service
 import { Component, inject, OnInit } from '@angular/core';
 import { StarWarsService } from '../../shared/api/starwars.service';
 
@@ -20,14 +19,23 @@ export class StarshipsComponent implements OnInit {
 
   loadStarships() {
     this.starwarsService.getStarships().subscribe((response: any) => {
-      console.log(response.results); // Ahora deberías ver solo las naves estelares en la consola
       this.starships = response.results.map((starship: any) => {
+        const id = this.extractId(starship.url); // Extraes el ID
+        const imageUrl = `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`; // Construyes la URL de la imagen
         return {
           ...starship,
-          id: this.extractId(starship.url), // Añadimos el ID extraído de la URL
+          id: id,
+          imageUrl: imageUrl, // Añades la URL de la imagen al objeto de la nave estelar
         };
       });
+      console.log(this.starships); // Ahora deberías ver las naves estelares con URLs de imágenes en la consola
     });
+  }
+
+  // Si no hoay imagen se mostrará esta
+  onImageError(event: any) {
+    event.target.src =
+      'https://starwars-visualguide.com/assets/img/big-placeholder.jpg';
   }
 
   extractId(url: string): string {

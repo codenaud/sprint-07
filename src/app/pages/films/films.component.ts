@@ -1,4 +1,4 @@
-// films.ts
+// films.component.ts
 import { Component, OnInit, inject } from '@angular/core';
 import { StarWarsService } from '../../shared/api/starwars.service';
 
@@ -7,7 +7,7 @@ import { StarWarsService } from '../../shared/api/starwars.service';
   standalone: true,
   imports: [],
   templateUrl: './films.component.html',
-  styleUrl: './films.component.scss',
+  styleUrls: ['./films.component.scss'], // Asegúrate de que el nombre de archivo es correcto aquí
 })
 export class FilmsComponent implements OnInit {
   private starwarsService = inject(StarWarsService);
@@ -16,16 +16,24 @@ export class FilmsComponent implements OnInit {
   ngOnInit() {
     this.loadFilms();
   }
+
   loadFilms() {
     this.starwarsService.getFilms().subscribe((response: any) => {
-      console.log(response.results); // Ahora deberías ver solo las naves estelares en la consola
       this.films = response.results.map((film: any) => {
+        const id = this.extractId(film.url); // Extrae el ID de la URL
+        const imageUrl = `https://starwars-visualguide.com/assets/img/films/${id}.jpg`; // Construye la URL de la imagen
         return {
           ...film,
-          id: this.extractId(film.url), // Añadimos el ID extraído de la URL
+          id: id,
+          imageUrl: imageUrl, // Añade la URL de la imagen al objeto de la película
         };
       });
     });
+  }
+
+  onImageError(event: any) {
+    event.target.src =
+      'https://starwars-visualguide.com/assets/img/big-placeholder.jpg';
   }
 
   extractId(url: string): string {
@@ -34,6 +42,7 @@ export class FilmsComponent implements OnInit {
     return match ? match[1] : ''; // Devuelve el ID o una cadena vacía si no hay coincidencia
   }
 }
+
 /**
    *  ! Solución ERROR => NullInjectorError:
    *  * recuerda añadir  --> provideHttpClient() en app.config.ts
