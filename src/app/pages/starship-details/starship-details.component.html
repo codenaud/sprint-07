@@ -1,1 +1,15 @@
 <p>starship-details works!</p>
+<!-- starships.component.html -->
+<div class="container d-flex flex-wrap gap-3 justify-content-center py-5">
+  <div class="card rounded-3">
+    <img [src]="starship.imageUrl" (error)="onImageError($event)" alt="{{starship.name}}" class="card-img-top">
+    <div class="card-body p-4 rounded-3">
+      <div class="decal d-flex gap-1 pb-3">
+        <div class="decal-line"></div>
+        <div class="decal-dot"></div>
+      </div>
+      <h5 class="card-title" style="color:black">{{starship.name}}</h5>
+      <p class="card-text" style="color:black">{{starship.model}}</p>
+    </div>
+  </div>
+</div>
