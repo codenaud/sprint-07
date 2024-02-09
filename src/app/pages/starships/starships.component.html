@@ -1,7 +1,7 @@
 <!-- starships.component.html -->
-<div class="container">
+<div class="container d-flex flex-wrap gap-3 justify-content-center py-5">
   @for (starship of starships; track starship.id) {
-  <div class="mb-5 card rounded-3">
+  <div class="card rounded-3">
     <img [src]="starship.imageUrl" (error)="onImageError($event)" alt="{{starship.name}}" class="card-img-top">
     <div class="card-body p-4 rounded-3">
       <div class="decal d-flex gap-1 pb-3">

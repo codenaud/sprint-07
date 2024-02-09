@@ -33,7 +33,7 @@ export class StarshipsComponent implements OnInit {
     });
   }
 
-  // Si no hoay imagen se mostrará esta
+  // Si no hay imagen se mostrará esta imagen
   onImageError(event: any) {
     event.target.src =
       'https://starwars-visualguide.com/assets/img/big-placeholder.jpg';

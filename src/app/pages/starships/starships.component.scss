@@ -1,6 +1,16 @@
+.container::after {
+  content: "";
+  flex: auto;
+}
 .card {
   background-color: #212529;
   color: #ccc;
+}
+
+.card-img-top {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Define el ratio deseado */
+  object-fit: cover;
 }
 .card-body:hover > .decal > .decal-line {
   border-top: 2px solid #fff;
@@ -34,4 +44,32 @@
   border-top: 2px solid #5a5c5d;
   border-bottom: 2px solid #5a5c5d;
   width: 24px;
+}
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .card {
+    width: 100% !important;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .card {
+    width: 48% !important;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .card {
+    width: 32% !important;
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
 }
