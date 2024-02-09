@@ -1,11 +1,17 @@
 <!-- starships.component.html -->
 <div class="container">
   @for (starship of starships; track starship.id) {
-  <div class="mb-5 starship-card" style="background-color:#212529; color:#ccc;">
-    <img [src]="starship.imageUrl" (error)="onImageError($event)" alt="{{starship.name}}"
-      style="width: 100%; max-width: 300px;">
-    <h3>{{starship.name}}</h3>
-    <h4>{{starship.model}}</h4>
+  <div class="mb-5 card rounded-3">
+    <img [src]="starship.imageUrl" (error)="onImageError($event)" alt="{{starship.name}}" class="card-img-top">
+    <div class="card-body p-4 rounded-3">
+      <div class="decal d-flex gap-1 pb-3">
+        <div class="decal-line"></div>
+        <div class="decal-dot"></div>
+      </div>
+      <h5 class="card-title">{{starship.name}}</h5>
+      <p class="card-text">{{starship.model}}</p>
+      <a [routerLink]="['/starships', starship.id]" class="btn btn-primary">Go somewhere</a>
+    </div>
   </div>
   }
 </div>

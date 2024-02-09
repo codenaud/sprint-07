@@ -20,6 +20,10 @@ export class StarWarsService {
     return `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
   }
 
+  getStarshipById(id: string) {
+    return this.http.get(`${this.BASE_URL}/starships/${id}/`);
+  }
+
   // Asumiendo que 'people' es el endpoint para pilotos
   getPilots() {
     return this.http.get(`${this.BASE_URL}/people/`);

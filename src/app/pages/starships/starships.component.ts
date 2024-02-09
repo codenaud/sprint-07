@@ -1,11 +1,12 @@
 //starships.component
 import { Component, inject, OnInit } from '@angular/core';
 import { StarWarsService } from '../../shared/api/starwars.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-starships',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './starships.component.html',
   styleUrl: './starships.component.scss',
 })
