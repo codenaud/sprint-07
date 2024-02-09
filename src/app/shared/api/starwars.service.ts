@@ -11,8 +11,9 @@ export class StarWarsService {
 
   constructor() {}
 
-  getStarships() {
-    return this.http.get(`${this.BASE_URL}/starships/`);
+  getStarships(page?: number) {
+    const url = `${this.BASE_URL}/starships/${page ? '?page=' + page : ''}`;
+    return this.http.get(url);
   }
 
   // Nuevo método para construir la URL de la imagen de un personaje

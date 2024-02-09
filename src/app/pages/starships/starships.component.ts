@@ -2,35 +2,44 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { StarWarsService } from '../../shared/api/starwars.service';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-starships',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './starships.component.html',
   styleUrl: './starships.component.scss',
 })
 export class StarshipsComponent implements OnInit {
-  private starwarsService = inject(StarWarsService);
   starships: any = [];
+  currentPage = 1;
+  totalPages = 0;
+
+  constructor(private starwarsService: StarWarsService) {}
 
   ngOnInit(): void {
-    this.loadStarships();
+    this.loadStarships(this.currentPage);
   }
 
-  loadStarships() {
-    this.starwarsService.getStarships().subscribe((response: any) => {
+  loadStarships(page: number) {
+    this.starwarsService.getStarships(page).subscribe((response: any) => {
+      this.totalPages = Math.ceil(response.count / 10); // Asumiendo 10 resultados por página
       this.starships = response.results.map((starship: any) => {
         const id = this.extractId(starship.url); // Extraes el ID
-        const imageUrl = this.starwarsService.getStarshipsImageUrl(id); // Extraer la imágen
+        const imageUrl = this.starwarsService.getStarshipsImageUrl(id); // Construyes la URL de la imagen
         return {
           ...starship,
           id: id,
           imageUrl: imageUrl, // Añades la URL de la imagen al objeto de la nave estelar
         };
       });
-      console.log(this.starships); // Ahora deberías ver las naves estelares con URLs de imágenes en la consola
+      this.currentPage = page;
     });
+  }
+
+  goToPage(page: number) {
+    this.loadStarships(page);
   }
 
   // Si no hay imagen se mostrará esta imagen
