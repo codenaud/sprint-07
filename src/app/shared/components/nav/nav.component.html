@@ -9,17 +9,20 @@
       <ul class="nav__list navbar-nav me-auto mb-2 mb-lg-0">
         <!-- Tus elementos de menú existentes -->
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" [routerLink]="['/']"
-            routerLinkActive="router-link-active">Home</a>
+          <a class="nav-link active" aria-current="page" [routerLink]="['/']" routerLinkActive="router-link-active"
+            (click)="closeNavbar()">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['starships']" routerLinkActive="router-link-active">Starships</a>
+          <a class="nav-link" [routerLink]="['starships']" routerLinkActive="router-link-active"
+            (click)="closeNavbar()">Starships</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['pilots']" routerLinkActive="router-link-active">Pilots</a>
+          <a class="nav-link" [routerLink]="['pilots']" routerLinkActive="router-link-active"
+            (click)="closeNavbar()">Pilots</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['films']" routerLinkActive="router-link-active">Films</a>
+          <a class="nav-link" [routerLink]="['films']" routerLinkActive="router-link-active"
+            (click)="closeNavbar()">Films</a>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" [routerLink]="['posts']" routerLinkActive="router-link-active">Posts</a>

@@ -44,7 +44,7 @@
 .navbar-collapse.collapsing,
 .navbar-collapse.show {
   position: relative !important;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(5px);
 }
 .bg-dark {
@@ -126,6 +126,7 @@ img.social-icon__image:first-child {
     left: -25px;
     outline: none !important;
     padding: 20px 40px 50px 15px;
+    z-index: 1;
   }
 }
 
