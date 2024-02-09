@@ -3,11 +3,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { StarWarsService } from '../../shared/api/starwars.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @Component({
   selector: 'app-starships',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, InfiniteScrollModule],
   templateUrl: './starships.component.html',
   styleUrl: './starships.component.scss',
 })
@@ -16,6 +17,10 @@ export class StarshipsComponent implements OnInit {
   currentPage = 1;
   totalPages = 0;
 
+  onScrollDown(): void {
+    this.currentPage++;
+    this.loadStarships(this.currentPage);
+  }
   constructor(private starwarsService: StarWarsService) {}
 
   ngOnInit(): void {
@@ -24,16 +29,19 @@ export class StarshipsComponent implements OnInit {
 
   loadStarships(page: number) {
     this.starwarsService.getStarships(page).subscribe((response: any) => {
-      this.totalPages = Math.ceil(response.count / 10); // Asumiendo 10 resultados por página
-      this.starships = response.results.map((starship: any) => {
-        const id = this.extractId(starship.url); // Extraes el ID
-        const imageUrl = this.starwarsService.getStarshipsImageUrl(id); // Construyes la URL de la imagen
-        return {
-          ...starship,
-          id: id,
-          imageUrl: imageUrl, // Añades la URL de la imagen al objeto de la nave estelar
-        };
-      });
+      // this.totalPages = Math.ceil(response.count / 10);  Asumiendo 10 resultados por página
+      this.starships = [
+        ...this.starships,
+        ...response.results.map((starship: any) => {
+          const id = this.extractId(starship.url); // Extraes el ID
+          const imageUrl = this.starwarsService.getStarshipsImageUrl(id); // Construyes la URL de la imagen
+          return {
+            ...starship,
+            id: id,
+            imageUrl: imageUrl, // Añades la URL de la imagen al objeto de la nave estelar
+          };
+        }),
+      ];
       this.currentPage = page;
     });
   }
