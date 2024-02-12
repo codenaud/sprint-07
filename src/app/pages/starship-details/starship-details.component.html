@@ -1,15 +1,53 @@
-<p>starship-details works!</p>
 <!-- starships.component.html -->
-<div class="container d-flex flex-wrap gap-3 justify-content-center py-5">
-  <div class="card rounded-3">
-    <img [src]="starship.imageUrl" (error)="onImageError($event)" alt="{{starship.name}}" class="card-img-top">
-    <div class="card-body p-4 rounded-3">
-      <div class="decal d-flex gap-1 pb-3">
-        <div class="decal-line"></div>
-        <div class="decal-dot"></div>
+<div class="container-fluid">
+  <div class="container title-section my-5">
+    <h1 class="text-uppercase mb-0 py-2 fs-2">starship</h1>
+  </div>
+  <div class="starship-cards-section container my-5">
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-5">
+          <img class="card-img-top" [src]="starship.imageUrl" (error)="onImageError($event)" alt="{{starship.name}}">
+        </div>
+        <div class="col-md-7">
+          <div class="card-body">
+            <div class="decal d-flex gap-1 pb-3">
+              <div class="decal-line"></div>
+              <div class="decal-dot"></div>
+            </div>
+            <h5 class="card-title">{{starship.name}}</h5>
+            <p class="card-lorem">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias ullam odio,
+              repudiandae ad iste unde perferendis quis id! </p>
+            <div class="card-details d-flex flex-wrap">
+              <div class="details col-6">
+                <p class="card-text">Model: {{starship.model}}</p>
+              </div>
+              <div class="details col-6">
+                <p class="card-text">Cost in credits: {{starship.cost_in_credits}}</p>
+              </div>
+              <div class="details col-6">
+                <p class="card-text">Atmosphering speed: {{starship.max_atmosphering_speed}}</p>
+              </div>
+              <div class="details col-6">
+                <p class="card-text">Length: {{starship.length}}</p>
+              </div>
+              <div class="details col-6">
+                <p class="card-text">Manufacturer: {{starship.manufacturer}}</p>
+              </div>
+              <div class="details col-6">
+                <p class="card-text">Crew: {{starship.crew}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <h5 class="card-title" style="color:black">{{starship.name}}</h5>
-      <p class="card-text" style="color:black">{{starship.model}}</p>
     </div>
   </div>
+</div>
+<!-- PILOTS -->
+<div class="container-fluid">
+  <div class="container title-section my-5">
+    <h1 class="text-uppercase mb-0 py-2 fs-2">pilots</h1>
+  </div>
+
 </div>

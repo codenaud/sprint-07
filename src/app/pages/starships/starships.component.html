@@ -14,7 +14,8 @@
 
   @for (starship of starships; track starship.id) {
   <div class="card rounded-3">
-    <img [src]="starship.imageUrl" (error)="onImageError($event)" alt="{{starship.name}}" class="card-img-top">
+    <a [routerLink]="['/starships', starship.id]"><img [src]="starship.imageUrl" (error)="onImageError($event)"
+        alt="{{starship.name}}" class="card-img-top"></a>
     <div class="card-body p-4 rounded-3">
       <div class="decal d-flex gap-1 pb-3">
         <div class="decal-line"></div>
@@ -22,7 +23,9 @@
       </div>
       <h5 class="card-title">{{starship.name}}</h5>
       <p class="card-text">{{starship.model}}</p>
-      <a [routerLink]="['/starships', starship.id]" class="btn btn-primary">Go somewhere</a>
+      <a [routerLink]="['/starships', starship.id]"
+        class="btn btn-warning rounded-5 text-uppercase fs-8 px-4 fw-bold">More
+        info</a>
     </div>
   </div>
   }

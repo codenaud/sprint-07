@@ -1,7 +1,3 @@
-.container::after {
-  content: "";
-  flex: auto;
-}
 .container-fluid {
   color: var(--primary-color);
 }
@@ -30,13 +26,6 @@
 }
 img.logo-title {
   width: 100%;
-}
-.btn {
-  text-transform: uppercase;
-  font-size: 16px;
-  font-weight: 500;
-  min-width: 210px;
-  height: 48px;
 }
 
 .premieres-section {
