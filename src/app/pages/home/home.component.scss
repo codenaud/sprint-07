@@ -1,0 +1,111 @@
+.container-fluid {
+  color: var(--primary-color);
+}
+.hero-section {
+  background-image: url("../../../assets/bg-hero.jpeg");
+  background-size: cover;
+  height: 600px;
+  width: 1600px;
+}
+
+.hero-title {
+  font-size: 36px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.hero-text,
+.premieres-section-text {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+}
+.btn {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 500;
+  min-width: 210px;
+  height: 48px;
+}
+
+.premieres-section {
+  background-image: url("../../../assets/bg-section-premieres-big.png");
+  background-size: cover;
+  height: max-content;
+  width: 1600px;
+}
+.card-modules {
+  width: 420px;
+  background-color: #212529;
+  color: #ccc;
+}
+
+.card-modules-img-top {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Define el ratio deseado */
+  object-fit: cover;
+}
+.card-modules-body:hover > .decal > .decal-line {
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  box-shadow: 0 0 6px 1px #fff;
+}
+
+.card--modules-body:hover > .decal > .decal-dot {
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  border-left: 2px solid #fff; /* Asegúrate de que el borde izquierdo y derecho también sean sólidos */
+  border-right: 2px solid #fff;
+  box-shadow: 0 0 6px 1px #fff;
+}
+.decal-dot {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  border: 2px solid white;
+  transition: all 0.3s ease;
+}
+
+.decal-line {
+  display: block;
+  content: "";
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  width: 24px;
+}
+// .nav-card-container {
+//   max-width: 1600px;
+// }
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .card {
+    width: 100% !important;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .card {
+    width: 48% !important;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .card {
+    width: 32% !important;
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
+}
