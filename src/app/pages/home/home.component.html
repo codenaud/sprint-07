@@ -18,20 +18,20 @@
 
 <!-- nav sections -->
 <!-- premieres section modules -->
-<div class="d-flex ">
-  <div class="container nav-card-container d-flex flex-wrap justify-content-between pt-8">
+<div class="d-flex px-4">
+  <div class="container nav-card-container d-flex flex-wrap px-2 justify-content-center pt-8 gap-3">
     <div class="card-modules rounded-3">
       <a class="nav-link" [routerLink]="['starships']"><img src="../../../assets/card-general-starship.jpg"
           alt="StarWars Starships" class="card-img-top rounded-top-3"></a>
-      <div class="card-body p-4 rounded-3">
+      <div class="card-modules-body p-4 rounded-3">
         <div class="decal d-flex gap-1 pb-3">
           <div class="decal-line"></div>
           <div class="decal-dot"></div>
         </div>
-        <h5 class="card-title">
-          "Starships" - Official Starships | Star Wars: History
+        <h5 class="card-modules-title">
+          <a class="nav-link" [routerLink]="['starships']">"Starships" - Official Starships | Star Wars: History</a>
         </h5>
-        <p class="card-text"></p>
+        <p class="card-modules-text"></p>
         <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-start pt-2">
           <button type="button" class="btn btn-warning px-5 py-2 me-md-2 rounded-5">More Info</button>
         </div> -->
@@ -46,7 +46,7 @@
           <div class="decal-dot"></div>
         </div>
         <h5 class="card-modules-title">
-          "Pilots" - Official Pîlots | Star Wars: Legends
+          <a class="nav-link" [routerLink]="['pilots']">"Pilots" - Official Pîlots | Star Wars: Legends</a>
         </h5>
         <p class="card-modules-text"></p>
         <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-start pt-2">
@@ -63,7 +63,7 @@
           <div class="decal-dot"></div>
         </div>
         <h5 class="card-modules-title">
-          "Films" - Official Films | Star Wars: Original Movies
+          <a class="nav-link" [routerLink]="['films']">"Films" - Official Films | Star Wars: Original Movies</a>
         </h5>
         <p class="card-modules-text"></p>
         <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-start pt-2">
@@ -83,10 +83,8 @@
         width="700" height="500" loading="lazy"> -->
       </div>
       <div class="col-lg-12 d-flex flex-column">
-        <div>
-          <h2 class="premieres-section-title mb-3">
-            <img class="logo-title" width="400" src="../../../assets/logo-bad-batch.png" alt="">
-          </h2>
+        <div class="logo-title-container pb-4">
+          <img class="logo-title" src="../../../assets/logo-bad-batch.png" alt="">
         </div>
         <div>
           <p class="premieres-section-text lead">The final season premieres February 21, only on Disney+.</p>
@@ -101,22 +99,24 @@
   <!-- premieres section modules -->
   <div class="d-flex ">
     <div class="container d-flex flex-wrap gap-3 justify-content-center pt-8">
+
       <div class="card-modules rounded-3">
-        <img src="../../../assets/module-img-01.jpeg" alt="" class="card-img-top rounded-top-3">
-        <div class="card-body p-4 rounded-3">
+        <img class="" src="../../../assets/module-img-01.jpeg" alt="" class="card-img-top rounded-top-3">
+        <div class="card-modules-body p-4 rounded-3">
           <div class="decal d-flex gap-1 pb-3">
             <div class="decal-line"></div>
             <div class="decal-dot"></div>
           </div>
-          <h5 class="card-title">
+          <h5 class="card-modules-title">
             "Confined" - Official Clip | Star Wars: The Bad Batch
           </h5>
-          <p class="card-text"></p>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-start pt-2">
+          <p class="card-modules-text"></p>
+          <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-start pt-2">
             <button type="button" class="btn btn-warning px-5 py-2 me-md-2 rounded-5">More Info</button>
-          </div>
+          </div> -->
         </div>
       </div>
+
       <div class="card-modules rounded-3">
         <img class="" src="../../../assets/module-img-02.jpeg" alt="" class="card-img-top rounded-top-3">
         <div class="card-modules-body p-4 rounded-3">
@@ -128,9 +128,9 @@
             Final Season Official Trailer - The Bad Batch
           </h5>
           <p class="card-modules-text"></p>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-start pt-2">
+          <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-start pt-2">
             <button type="button" class="btn btn-warning px-5 py-2 me-md-2 rounded-5">More Info</button>
-          </div>
+          </div> -->
         </div>
       </div>
       <div class="card-modules rounded-3">
@@ -144,9 +144,9 @@
             Watch the Star Wars: The Bad Batch Season 3 Trailer
           </h5>
           <p class="card-modules-text"></p>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-start pt-2">
+          <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-start pt-2">
             <button type="button" class="btn btn-warning px-5 py-2 me-md-2 rounded-5">More Info</button>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
