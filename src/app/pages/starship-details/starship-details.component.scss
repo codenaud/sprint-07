@@ -62,6 +62,13 @@
 .bb-1 {
   border-bottom: 1px solid #5a5c5d;
 }
+// Pilot Cards
+.pilot-card,
+.film-card {
+  background-color: #212529;
+  color: #ccc;
+}
+
 // Small devices (landscape phones, 576px and up)
 @media (max-width: 576px) {
 }

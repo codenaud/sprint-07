@@ -35,6 +35,11 @@ export class StarWarsService {
     return `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
   }
 
+  // Método para obtener detalles de un piloto por su ID
+  getPilotById(id: string) {
+    return this.http.get(`${this.BASE_URL}/people/${id}/`);
+  }
+
   // Obtener los planetas de los pilotos que provienen de otra url => https://swapi.dev/api/planets/1/
   getPlanetByUrl(url: string) {
     return this.http.get(url);
@@ -47,5 +52,9 @@ export class StarWarsService {
   // Nuevo método para construir la URL de la imagen de un personaje
   getFilmsImageUrl(id: string) {
     return `https://starwars-visualguide.com/assets/img/films/${id}.jpg`;
+  }
+  // Método para obtener detalles de un film por su ID
+  getFilmById(id: string) {
+    return this.http.get(`${this.BASE_URL}/films/${id}/`);
   }
 }

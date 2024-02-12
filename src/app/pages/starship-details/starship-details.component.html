@@ -1,7 +1,7 @@
 <!-- starships.component.html -->
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="starship; else loading">
   <div class="container title-section my-5">
-    <h1 class="text-uppercase mb-0 py-2 fs-2">starship</h1>
+    <h2 class="text-uppercase mb-0 py-2 fs-2">starship</h2>
   </div>
   <div class="starship-cards-section container my-5">
     <div class="card mb-3">
@@ -44,10 +44,58 @@
     </div>
   </div>
 </div>
+
+<ng-template #loading>
+  <div>Cargando detalles de la nave...</div>
+</ng-template>
+
 <!-- PILOTS -->
 <div class="container-fluid">
   <div class="container title-section my-5">
-    <h1 class="text-uppercase mb-0 py-2 fs-2">pilots</h1>
+    <h2 class="text-uppercase mb-0 py-2 fs-2">Pilots</h2>
   </div>
+  <div class="pilots-cards-section container my-5 ">
+    <div class="d-flex gap-3" *ngIf="pilots.length > 0; else noPilots">
+      <div *ngFor="let pilot of pilots">
+        <div class="mb-5 pilot-card rounded-3">
+          <img class="rounded-top-3" [src]="pilot.imageUrl" (error)="onImageError($event)" alt="{{pilot.name}}"
+            style="width: 100%; max-width: 300px;">
+          <h5 class="text-uppercase text-center py-4">{{pilot.name}}</h5>
+          <!-- Otros detalles del piloto que desees mostrar -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Plantilla alternativa cuando no hay pilotos disponibles -->
+  <ng-template #noPilots>
+    <div *ngIf="!pilotsAvailable" class="alert alert-warning" role="alert">
+      Lo siento, pero no hay pilotos disponibles.
+    </div>
+  </ng-template>
+</div>
 
+
+<!-- FILMS -->
+<div class="container-fluid">
+  <div class="container title-section my-5">
+    <h2 class="text-uppercase mb-0 py-2 fs-2">Films</h2>
+  </div>
+  <div class="films-cards-section container my-5">
+    <div class="d-flex gap-3" *ngIf="films.length > 0; else noFilms">
+      <div *ngFor="let film of films">
+        <div class="mb-5 film-card  rounded-3">
+          <img class="rounded-top-3" [src]="film.imageUrl" alt="{{film.title}}" style="width: 100%; max-width: 300px;">
+          <h5 class="text-uppercase text-center pt-4 mb-0">{{film.title}}</h5>
+          <p class="text-center mb-0">Episode {{film.episode_id}}</p>
+          <p class="text-center pb-4">Director: {{film.director}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Plantilla alternativa cuando no hay films disponibles -->
+  <ng-template #noFilms>
+    <div *ngIf="!filmsAvailable" class="alert alert-warning" role="alert">
+      Lo siento, pero no hay films disponibles.
+    </div>
+  </ng-template>
 </div>
