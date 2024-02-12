@@ -1,11 +1,17 @@
 <!-- pilots.component.html -->
-<div class="container">
-  @for (pilot of pilots; track pilot.id) {
-  <div class="mb-5 pilot-card" style="background-color:#212529; color:#ccc;">
-    <h3>Name: {{pilot.name}}</h3>
-    <h4>Homeworld: {{pilot.homeworldName}}</h4>
-    <img [src]="pilot.imageUrl" (error)="onImageError($event)" alt="{{pilot.name}}"
-      style="width: 100%; max-width: 300px;">
+<div class="container-fluid">
+  <div class="container title-section my-5">
+    <h2 class="text-uppercase mb-0 py-2 fs-2">Pilots</h2>
   </div>
-  }
-</div>
+  <div class="pilots-cards-section container my-5 ">
+    <div class="d-flex flex-wrap gap-3">
+      @for (pilot of pilots; track pilot.id) {
+      <div class="mb-5 pilot-card rounded-3" style="background-color:#212529; color:#ccc;">
+        <img class=" rounded-top-3" [src]="pilot.imageUrl" (error)="onImageError($event)" alt="{{pilot.name}}"
+          style="width: 100%; max-width: 300px;">
+        <h5 class="text-uppercase text-center pt-4 mb-0">{{pilot.name}}</h5>
+        <p class="text-center mb-0 pb-4">Home world: {{pilot.homeworldName}}</p>
+      </div>
+      }
+    </div>
+  </div>
