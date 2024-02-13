@@ -20,39 +20,51 @@ import { CommonModule } from '@angular/common';
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
 
+  // verificación contraseña
+  hidePasswordConfirmation: boolean = true;
+
   constructor(private formBuilder: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
-    this.signupForm = this.formBuilder.group({
-      fName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          CustomValidators.onlyLetters,
+    this.signupForm = this.formBuilder.group(
+      {
+        fName: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(3),
+            CustomValidators.onlyLetters,
+          ],
         ],
-      ],
-      fLastName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          CustomValidators.onlyLetters,
+        fLastName: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(3),
+            CustomValidators.onlyLetters,
+          ],
         ],
-      ],
-      fEmail: ['', [Validators.required, Validators.email]],
-      fPhone: ['', [Validators.required, CustomValidators.onlyPhones]],
-      fPassword: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          CustomValidators.atLeastOneUppercase,
-          CustomValidators.atLeastOneLowercase,
-          CustomValidators.atLeastOneNumber,
+        fEmail: ['', [Validators.required, Validators.email]],
+        fPhone: ['', [Validators.required, CustomValidators.onlyPhones]],
+        fPassword: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            CustomValidators.atLeastOneUppercase,
+            CustomValidators.atLeastOneLowercase,
+            CustomValidators.atLeastOneNumber,
+          ],
         ],
-      ],
-    });
+        fPasswordConfirmation: ['', [Validators.required]],
+      },
+      {
+        validators: CustomValidators.mustBeEqual(
+          'fPassword',
+          'fPasswordConfirmation'
+        ),
+      }
+    );
   }
 
   /* verificación [class.is-invalid] de bootstrap. Una variable booleana utilizada para rastrear si el formulario ha sido enviado. Esto ayuda a controlar la visualización de los mensajes de validación */
@@ -66,7 +78,7 @@ export class SignupComponent implements OnInit {
     }
   }
   // limpiar formulario de registro
-  registerFormclean() {
+  registerFormClean() {
     this.signupForm.reset();
   }
 }
