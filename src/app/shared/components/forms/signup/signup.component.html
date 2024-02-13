@@ -75,7 +75,7 @@
         <div class="form-group pb-4">
           <label for="fPassword" class="fw-bold">Password</label>
           <input class="form-control" type="password" formControlName="fPassword"
-            [class.is-valid]="signupForm.get('fPassword')!.touched && signupForm.get('fPassword')!.valid"
+            [class.is-valid]="signupForm.get('fPassword')!.touched && signupForm.get('fPassword')!.valid && !signupForm.errors?.['mustBeEqual']"
             [class.is-invalid]="signupForm.get('fPassword')!.invalid && submitted">
           <!-- Mensajes de error -->
           <div *ngIf="signupForm.get('fPassword')!.errors && submitted" class="invalid-feedback">
@@ -99,17 +99,21 @@
         <div class="form-group pb-4">
           <label for="fPasswordConfirmation" class="fw-bold">Password Confirmation</label>
           <input [type]="hidePasswordConfirmation ? 'password' : 'text'" class="form-control"
-            [class.is-invalid]="signupForm.get('fPasswordConfirmation')!.invalid && submitted"
-            formControlName="fPasswordConfirmation" />
+            formControlName="fPasswordConfirmation"
+            [class.is-valid]="signupForm.get('fPasswordConfirmation')!.touched && signupForm.get('fPasswordConfirmation')!.valid && !signupForm.errors?.['mustBeEqual']"
+            [class.is-invalid]="signupForm.get('fPasswordConfirmation')!.invalid && submitted || signupForm.errors?.['mustBeEqual'] && submitted">
+          <!-- Mensajes de error para fPasswordConfirmation aquí -->
           <div *ngIf="signupForm.get('fPasswordConfirmation')!.invalid && submitted" class="invalid-feedback">
             <div *ngIf="signupForm.get('fPasswordConfirmation')!.hasError('required')">
               - The field is required
             </div>
           </div>
+          <div *ngIf="signupForm.errors?.['mustBeEqual'] && submitted" class="invalid-feedback d-block">
+            - The passwords must be equal
+          </div>
         </div>
-        <div *ngIf="signupForm.errors?.['mustBeEqual'] && submitted" class="invalid-feedback">
-          - The passwords must be equal
-        </div>
+
+
         <div class="d-flex flex-column">
           <div class="pb-3">
             <span>Do you have an account? <a class="login-link__text" [routerLink]="['/login']"

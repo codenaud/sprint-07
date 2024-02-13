@@ -73,7 +73,7 @@ export class SignupComponent implements OnInit {
   signupData() {
     this.submitted = true;
     if (this.signupForm.valid) {
-      console.log(this.signupForm.value); // Ver en consola 'name' & 'password'
+      console.log(this.signupForm.value); // Ver en consola campos rellenados
       // Lógica de autenticación
     }
   }
