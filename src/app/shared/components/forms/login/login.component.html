@@ -1,0 +1,62 @@
+<!-- login.component.html -->
+<div class="container login-container d-flex py-5 align-items-center justify-content-center">
+  <div class="row">
+    <div class="login-box rounded-3 p-5">
+      <form [formGroup]="loginForm" (ngSubmit)="logindata()">
+        <div class="alert alert-danger" role="alert">
+          I'm sorry, but to see the starships you must be logged in.
+        </div>
+        <div class="form-group pb-3">
+          <label for="fName" class="fw-bold">User Name</label>
+          <input class="form-control" type="text" formControlName="fName"
+            [class.is-valid]="loginForm.get('fName')!.touched && loginForm.get('fName')!.valid"
+            [class.is-invalid]="loginForm.get('fName')!.invalid && submitted">
+          <!-- Mensajes de error -->
+          <div *ngIf="loginForm.get('fName')!.errors && submitted" class="invalid-feedback">
+            <div *ngIf="loginForm.get('fName')!.hasError('required')">
+              - This field is required
+            </div>
+            <div *ngIf="loginForm.get('fName')!.hasError('minLength')">
+              - This field is 3 characters minimum
+            </div>
+            <div *ngIf="loginForm.get('fName')!.hasError('onlyLetters')">
+              - Please enter a valid name without numbers
+            </div>
+          </div>
+        </div>
+        <div class="form-group pb-4">
+          <label for="fPassword" class="fw-bold">Password</label>
+          <input class="form-control" type="password" formControlName="fPassword"
+            [class.is-valid]="loginForm.get('fPassword')!.touched && loginForm.get('fPassword')!.valid"
+            [class.is-invalid]="loginForm.get('fPassword')!.invalid && submitted">
+          <!-- Mensajes de error -->
+          <div *ngIf="loginForm.get('fPassword')!.errors && submitted" class="invalid-feedback">
+            <div *ngIf="loginForm.get('fPassword')!.hasError('required')">
+              - This field is required
+            </div>
+            <div *ngIf="loginForm.get('fPassword')!.hasError('minLength')">
+              - This field is 8 characters minimum
+            </div>
+            <div *ngIf="loginForm.get('fPassword')!.hasError('atLeastOneUppercase')">
+              - Please enter at least one uppercase
+            </div>
+            <div *ngIf="loginForm.get('fPassword')!.hasError('atLeastOneLowercase')">
+              - Please enter at least one lowercase
+            </div>
+            <div *ngIf="loginForm.get('fPassword')!.hasError('atLeastOneNumber')">
+              - Please enter at least one number
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-column">
+          <div class="pb-3">
+            <span>Don't you have an account? <a class="login-link__text" [routerLink]="['/singup']"
+                routerLinkActive="router-link-active">SignUp</a></span>
+          </div>
+          <div><button type="submit" class="btn btn-warning rounded-5 text-uppercase px-4 fw-bold">Login</button></div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
