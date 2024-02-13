@@ -2,12 +2,12 @@
 <div class="container login-container d-flex py-5 align-items-center justify-content-center">
   <div class="row">
     <div class="login-box rounded-3 p-5">
-      <form [formGroup]="loginForm" (ngSubmit)="logindata()">
+      <form [formGroup]="loginForm" (ngSubmit)="loginData()">
         <div class="alert alert-danger" role="alert">
           I'm sorry, but to see the starships you must be logged in.
         </div>
         <div class="form-group pb-3">
-          <label for="fName" class="fw-bold">User Name</label>
+          <label for="fName" class="fw-bold">Name</label>
           <input class="form-control" type="text" formControlName="fName"
             [class.is-valid]="loginForm.get('fName')!.touched && loginForm.get('fName')!.valid"
             [class.is-invalid]="loginForm.get('fName')!.invalid && submitted">
@@ -50,7 +50,7 @@
         </div>
         <div class="d-flex flex-column">
           <div class="pb-3">
-            <span>Don't you have an account? <a class="login-link__text" [routerLink]="['/singup']"
+            <span>Don't you have an account? <a class="login-link__text" [routerLink]="['/signup']"
                 routerLinkActive="router-link-active">SignUp</a></span>
           </div>
           <div><button type="submit" class="btn btn-warning rounded-5 text-uppercase px-4 fw-bold">Login</button></div>

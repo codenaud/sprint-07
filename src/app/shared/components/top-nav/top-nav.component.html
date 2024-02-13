@@ -51,11 +51,12 @@
     <div class="login-links">
       <ul class="login-links__list">
         <li class="login-link">
-          <a class="login-link__text " href="#" target="_blank" rel="noopener noreferrer">
-            <img class="login-link__image" src="../../../../assets/icon_search.svg" alt="Search Box">
-            <span class="d-none d-lg-inline">Search</span>
+          <a class="login-link__text" [routerLink]="['/signup']" routerLinkActive="router-link-active">
+            <img class="signup-link__image" src="../../../../assets/icon_signup.svg" alt="signup User">
+            <span class="">Sign Up</span>
           </a>
         </li>
+
         <li class="login-link d-none d-lg-inline">
           <a class="login-link__text" [routerLink]="['/login']" routerLinkActive="router-link-active">
             <img class="login-link__image" src="../../../../assets/icon_user.svg" alt="Login User">

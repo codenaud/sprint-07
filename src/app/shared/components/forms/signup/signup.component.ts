@@ -11,27 +11,37 @@ import { CustomValidators } from '../../../custom-validators';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-signup',
   standalone: true,
   imports: [ReactiveFormsModule, RouterLink, RouterOutlet, CommonModule],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  templateUrl: './signup.component.html',
+  styleUrl: './signup.component.scss',
 })
-export class LoginComponent implements OnInit {
-  loginForm!: FormGroup;
+export class SignupComponent implements OnInit {
+  signupForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
+    this.signupForm = this.formBuilder.group({
       fName: [
         '',
         [
           Validators.required,
           Validators.minLength(3),
-          CustomValidators.onlyLetters, // Asumiendo que tienes este validador personalizado
+          CustomValidators.onlyLetters,
         ],
       ],
+      fLastName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          CustomValidators.onlyLetters,
+        ],
+      ],
+      fEmail: ['', [Validators.required, Validators.email]],
+      fPhone: ['', [Validators.required, CustomValidators.onlyPhones]],
       fPassword: [
         '',
         [
@@ -48,15 +58,15 @@ export class LoginComponent implements OnInit {
   /* verificación [class.is-invalid] de bootstrap. Una variable booleana utilizada para rastrear si el formulario ha sido enviado. Esto ayuda a controlar la visualización de los mensajes de validación */
   submitted = false;
 
-  loginData() {
+  signupData() {
     this.submitted = true;
-    if (this.loginForm.valid) {
-      console.log(this.loginForm.value); // Ver en consola 'name' & 'password'
+    if (this.signupForm.valid) {
+      console.log(this.signupForm.value); // Ver en consola 'name' & 'password'
       // Lógica de autenticación
     }
   }
   // limpiar formulario de registro
-  registerFormClean() {
-    this.loginForm.reset();
+  registerFormclean() {
+    this.signupForm.reset();
   }
 }

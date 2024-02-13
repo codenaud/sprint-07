@@ -1,0 +1,110 @@
+<!-- signup.component.html -->
+<div class="container signup-container d-flex py-5 align-items-center justify-content-center">
+  <div class="row">
+    <div class="signup-box rounded-3 p-5">
+      <form [formGroup]="signupForm" (ngSubmit)="signupData()">
+        <div class="alert alert-danger" role="alert">
+          I'm sorry, but to see the starships you must be logged in.
+        </div>
+        <div class="form-group pb-3">
+          <label for="fName" class="fw-bold">First Name</label>
+          <input class="form-control" type="text" formControlName="fName"
+            [class.is-valid]="signupForm.get('fName')!.touched && signupForm.get('fName')!.valid"
+            [class.is-invalid]="signupForm.get('fName')!.invalid && submitted">
+          <!-- Mensajes de error -->
+          <div *ngIf="signupForm.get('fName')!.errors && submitted" class="invalid-feedback">
+            <div *ngIf="signupForm.get('fName')!.hasError('required')">
+              - This field is required
+            </div>
+            <div *ngIf="signupForm.get('fName')!.hasError('minLength')">
+              - This field is 3 characters minimum
+            </div>
+            <div *ngIf="signupForm.get('fName')!.hasError('onlyLetters')">
+              - Please enter a valid name without numbers
+            </div>
+          </div>
+        </div>
+        <div class="form-group pb-3">
+          <label for="fLastName" class="fw-bold">Last Name</label>
+          <input class="form-control" type="text" formControlName="fLastName"
+            [class.is-valid]="signupForm.get('fLastName')!.touched && signupForm.get('fLastName')!.valid"
+            [class.is-invalid]="signupForm.get('fLastName')!.invalid && submitted">
+          <!-- Mensajes de error -->
+          <div *ngIf="signupForm.get('fLastName')!.errors && submitted" class="invalid-feedback">
+            <div *ngIf="signupForm.get('fLastName')!.hasError('required')">
+              - This field is required
+            </div>
+            <div *ngIf="signupForm.get('fLastName')!.hasError('minLength')">
+              - This field is 3 characters minimum
+            </div>
+            <div *ngIf="signupForm.get('fLastName')!.hasError('onlyLetters')">
+              - Please enter a valid name without numbers
+            </div>
+          </div>
+        </div>
+        <div class="form-group pb-3">
+          <label for="fEmail" class="fw-bold">Email</label>
+          <input class="form-control" type="email" formControlName="fEmail"
+            [class.is-valid]="signupForm.get('fEmail')!.touched && signupForm.get('fEmail')!.valid"
+            [class.is-invalid]="signupForm.get('fEmail')!.invalid && submitted">
+          <!-- Mensajes de error -->
+          <div *ngIf="signupForm.get('fEmail')!.errors && submitted" class="invalid-feedback">
+            <div *ngIf="signupForm.get('fEmail')!.hasError('required')">
+              - This field is required
+            </div>
+            <div *ngIf="signupForm.get('fEmail')!.hasError('email')">
+              - - Please enter a valid email
+            </div>
+          </div>
+        </div>
+        <div class="form-group pb-3">
+          <label for="fPhone" class="fw-bold">Phone</label>
+          <input class="form-control" type="text" formControlName="fPhone"
+            [class.is-valid]="signupForm.get('fPhone')!.touched && signupForm.get('fPhone')!.valid"
+            [class.is-invalid]="signupForm.get('fPhone')!.invalid && submitted">
+          <!-- Mensajes de error -->
+          <div *ngIf="signupForm.get('fPhone')!.errors && submitted" class="invalid-feedback">
+            <div *ngIf="signupForm.get('fPhone')!.hasError('required')">
+              - This field is required
+            </div>
+            <div *ngIf="signupForm.get('fPhone')!.hasError('onlyPhones')">
+              - - Please enter a valid phone number
+            </div>
+          </div>
+        </div>
+        <div class="form-group pb-4">
+          <label for="fPassword" class="fw-bold">Password</label>
+          <input class="form-control" type="password" formControlName="fPassword"
+            [class.is-valid]="signupForm.get('fPassword')!.touched && signupForm.get('fPassword')!.valid"
+            [class.is-invalid]="signupForm.get('fPassword')!.invalid && submitted">
+          <!-- Mensajes de error -->
+          <div *ngIf="signupForm.get('fPassword')!.errors && submitted" class="invalid-feedback">
+            <div *ngIf="signupForm.get('fPassword')!.hasError('required')">
+              - This field is required
+            </div>
+            <div *ngIf="signupForm.get('fPassword')!.hasError('minLength')">
+              - This field is 8 characters minimum
+            </div>
+            <div *ngIf="signupForm.get('fPassword')!.hasError('atLeastOneUppercase')">
+              - Please enter at least one uppercase
+            </div>
+            <div *ngIf="signupForm.get('fPassword')!.hasError('atLeastOneLowercase')">
+              - Please enter at least one lowercase
+            </div>
+            <div *ngIf="signupForm.get('fPassword')!.hasError('atLeastOneNumber')">
+              - Please enter at least one number
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-column">
+          <div class="pb-3">
+            <span>Do you have an account? <a class="login-link__text" [routerLink]="['/login']"
+                routerLinkActive="router-link-active">Login</a></span>
+          </div>
+          <div><button type="submit" class="btn btn-warning rounded-5 text-uppercase px-4 fw-bold">signup</button></div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
