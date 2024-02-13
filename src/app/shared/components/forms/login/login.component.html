@@ -7,20 +7,19 @@
           I'm sorry, but to see the starships you must be logged in.
         </div>
         <div class="form-group pb-3">
-          <label for="fName" class="fw-bold">Name</label>
-          <input class="form-control" type="text" formControlName="fName"
-            [class.is-valid]="loginForm.get('fName')!.touched && loginForm.get('fName')!.valid"
-            [class.is-invalid]="loginForm.get('fName')!.invalid && submitted">
+          <label for="fEmail" class="fw-bold">Email</label>
+          <input class="form-control" type="text" formControlName="fEmail"
+            [class.is-valid]="loginForm.get('fEmail')!.touched && loginForm.get('fEmail')!.valid"
+            [class.is-invalid]="loginForm.get('fEmail')!.invalid && submitted">
+          <!-- Mensajes de ayuda -->
+          <div id="emailHelp" class="form-text">demo&#64;demo.com</div>
           <!-- Mensajes de error -->
-          <div *ngIf="loginForm.get('fName')!.errors && submitted" class="invalid-feedback">
-            <div *ngIf="loginForm.get('fName')!.hasError('required')">
+          <div *ngIf="loginForm.get('fEmail')!.errors && submitted" class="invalid-feedback">
+            <div *ngIf="loginForm.get('fEmail')!.hasError('required')">
               - This field is required
             </div>
-            <div *ngIf="loginForm.get('fName')!.hasError('minLength')">
-              - This field is 3 characters minimum
-            </div>
-            <div *ngIf="loginForm.get('fName')!.hasError('onlyLetters')">
-              - Please enter a valid name without numbers
+            <div *ngIf="loginForm.get('fEmail')!.hasError('email')">
+              - Please enter a valid email
             </div>
           </div>
         </div>
@@ -29,6 +28,8 @@
           <input class="form-control" type="password" formControlName="fPassword"
             [class.is-valid]="loginForm.get('fPassword')!.touched && loginForm.get('fPassword')!.valid"
             [class.is-invalid]="loginForm.get('fPassword')!.invalid && submitted">
+          <!-- Mensajes de ayuda -->
+          <div id="passwordHelp" class="form-text">Demo12345</div>
           <!-- Mensajes de error -->
           <div *ngIf="loginForm.get('fPassword')!.errors && submitted" class="invalid-feedback">
             <div *ngIf="loginForm.get('fPassword')!.hasError('required')">

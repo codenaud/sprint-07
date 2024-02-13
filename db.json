@@ -1,0 +1,21 @@
+{
+  "signupUsersList": [
+    {
+      "fName": "Pepe",
+      "fLastName": "Rodriguez",
+      "fEmail": "prodriguez@gmail.com",
+      "fPhone": "600500400",
+      "fPassword": "ABCD1234abcd",
+      "fPasswordConfirmation": "ABCD1234abcd"
+    },
+    {
+      "id": "0b7f",
+      "fName": "demo",
+      "fLastName": "demo",
+      "fEmail": "demo@demo.com",
+      "fPhone": "600500400",
+      "fPassword": "Demo12345",
+      "fPasswordConfirmation": "Demo12345"
+    }
+  ]
+}

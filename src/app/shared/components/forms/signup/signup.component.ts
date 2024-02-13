@@ -1,3 +1,4 @@
+// signup.component.ts
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
@@ -9,11 +10,19 @@ import {
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { CustomValidators } from '../../../custom-validators';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, RouterOutlet, CommonModule],
+  imports: [
+    ReactiveFormsModule,
+    RouterLink,
+    RouterOutlet,
+    CommonModule,
+    HttpClientModule,
+  ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
 })
@@ -23,7 +32,11 @@ export class SignupComponent implements OnInit {
   // verificación contraseña
   hidePasswordConfirmation: boolean = true;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group(
@@ -71,12 +84,25 @@ export class SignupComponent implements OnInit {
   submitted = false;
 
   signupData() {
-    this.submitted = true;
     if (this.signupForm.valid) {
-      console.log(this.signupForm.value); // Ver en consola campos rellenados
-      // Lógica de autenticación
+      this.http
+        .post<any>(
+          'http://localhost:3000/signupUsersList',
+          this.signupForm.value
+        )
+        .subscribe({
+          next: (res) => {
+            alert('SIGNUP SUCCESSFUL');
+            this.signupForm.reset();
+            this.router.navigate(['login']);
+          },
+          error: (err) => {
+            alert('Something went wrong');
+          },
+        });
     }
   }
+
   // limpiar formulario de registro
   registerFormClean() {
     this.signupForm.reset();
