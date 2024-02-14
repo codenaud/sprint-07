@@ -17,7 +17,6 @@ export const routes: Routes = [
     component: StarshipsComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'starships', component: StarshipsComponent },
   { path: 'starships/:id', component: StarshipDetailsComponent },
   { path: 'films', component: FilmsComponent },
   { path: 'pilots', component: PilotsComponent },

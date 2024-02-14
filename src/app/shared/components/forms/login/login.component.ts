@@ -6,11 +6,17 @@ import {
   ReactiveFormsModule,
   FormBuilder,
 } from '@angular/forms';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  RouterLink,
+  RouterOutlet,
+} from '@angular/router';
 import { CustomValidators } from '../../../custom-validators';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../../../services/authservice.service'; // Asegúrate de que la ruta sea correcta
 
 @Component({
   selector: 'app-login',
@@ -29,9 +35,11 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private http: HttpClient
+    private http: HttpClient, // Asume que ya lo tienes inyectado para hacer las llamadas HTTP
+    private authService: AuthService, // Servicio de autenticación
+    private router: Router, // Para manejar la redirección
+    private route: ActivatedRoute, // Para acceder a los queryParams
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -61,6 +69,7 @@ export class LoginComponent implements OnInit {
   /* verificación [class.is-invalid] de bootstrap. Una variable booleana utilizada para rastrear si el formulario ha sido enviado. Esto ayuda a controlar la visualización de los mensajes de validación */
   submitted = false;
 
+  // En tu componente de login
   loginData() {
     this.http.get<any>('http://localhost:3000/signupUsersList').subscribe(
       (res) => {
@@ -71,13 +80,25 @@ export class LoginComponent implements OnInit {
           );
         });
         if (user) {
-          // Guardar un token o un indicador en localStorage
-          localStorage.setItem('isLoggedIn', 'true');
-          // O cualquier otro dato relevante, como un token de autenticación real
-
-          alert('Login Succesful');
+          this.authService.setUserAuthenticated(); // Asume authService inyectado en tu componente
+          alert('Login Successful');
           this.loginForm.reset();
-          this.router.navigate(['starships']);
+
+          // Cambio clave aquí: Utilizar returnUrl para la redirección
+          const returnUrl =
+            this.route.snapshot.queryParams['returnUrl'] || '/starships'; // Usamos '/starships' como fallback
+          this.router
+            .navigateByUrl(returnUrl)
+            .then((success) => {
+              if (success) {
+                console.log(`Navegación a '${returnUrl}' exitosa`);
+              } else {
+                console.log(`Navegación a '${returnUrl}' fallida`);
+              }
+            })
+            .catch((error) => {
+              console.error('Error durante la navegación:', error);
+            });
         } else {
           alert('user not found');
         }
