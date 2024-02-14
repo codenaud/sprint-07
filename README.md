@@ -1,6 +1,16 @@
 # Sprint 07 - (StarWars API)
 
+![IT Academy](src/assets/git-screenshot.png)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
+
+## Introduction
+
+Welcome to Sprint 07: In this exercise the data will be read from a server.
+
+This delivery is based on a technical test of a large company in the e-commerce sector, which is looking for front-end developers in the city of Barcelona. The technical test consists of: consuming the data from an API, displaying it on a screen through a list and showing the detail of each item in the list.
+
+The website you have to develop must display information about Star Wars ships! The list of ships will have to be shown with the detailed information of each one of them.
 
 ## Setup and Installation
 
