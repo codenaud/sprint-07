@@ -1,6 +1,32 @@
-# Web
+# Sprint 07 - (StarWars API)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
+
+## Setup and Installation
+
+To get this project up and running on your local machine, follow these steps:
+
+1. Clone this repository to your local machine.
+2. Navigate to the project directory.
+3. Install the necessary dependencies:
+
+`npm install`
+
+4. Start local server.
+
+`npm start`
+
+5. Install JSON Server Auth.
+
+`web :  https://www.npmjs.com/package/json-server-auth`
+`npm install -g json-server`
+`npm i json-server`
+`json-server --watch db.json`
+
+6. Login Form credentials.
+
+`Email: demo@demo.com`
+`Password: Demo12345`
 
 ## Development server
 
