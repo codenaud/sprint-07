@@ -24,21 +24,25 @@ export class StarshipsComponent implements OnInit {
   constructor(private starwarsService: StarWarsService) {}
 
   ngOnInit(): void {
+    this.currentPage = 1; // Reinicia currentPage a 1
     this.loadStarships(this.currentPage);
   }
 
   loadStarships(page: number) {
     this.starwarsService.getStarships(page).subscribe((response: any) => {
-      // this.totalPages = Math.ceil(response.count / 10);  Asumiendo 10 resultados por página
+      if (page === 1) {
+        this.starships = []; // Limpia el arreglo para la página 1
+      }
+      // Continúa con el procesamiento existente...
       this.starships = [
         ...this.starships,
         ...response.results.map((starship: any) => {
-          const id = this.extractId(starship.url); // Extraes el ID
-          const imageUrl = this.starwarsService.getStarshipsImageUrl(id); // Construyes la URL de la imagen
+          const id = this.extractId(starship.url);
+          const imageUrl = this.starwarsService.getStarshipsImageUrl(id);
           return {
             ...starship,
             id: id,
-            imageUrl: imageUrl, // Añades la URL de la imagen al objeto de la nave estelar
+            imageUrl: imageUrl,
           };
         }),
       ];
