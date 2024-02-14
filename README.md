@@ -28,9 +28,12 @@ To get this project up and running on your local machine, follow these steps:
 
 5. Install JSON Server Auth.
 
-`web :  https://www.npmjs.com/package/json-server-auth`
+[JSON Server Auth Reference](https://www.npmjs.com/package/json-server-auth)
+
 `npm install -g json-server`
+
 `npm i json-server`
+
 `json-server --watch db.json`
 
 6. Login Form credentials.
