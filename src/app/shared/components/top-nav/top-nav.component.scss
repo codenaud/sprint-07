@@ -58,7 +58,10 @@ img.social-icon__image {
   height: 18px;
   margin-right: 0.3rem;
 }
-
+.logout-btn {
+  border: none;
+  background-color: transparent;
+}
 /* .xs = | Extra Small devices only (portrait phones) less than 576px */
 @media (min-width: 360px) and (max-width: 420px) {
   .logo {
