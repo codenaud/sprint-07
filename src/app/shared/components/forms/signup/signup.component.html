@@ -3,9 +3,7 @@
   <div class="row">
     <div class="signup-box rounded-3 p-5">
       <form [formGroup]="signupForm" (ngSubmit)="signupData()">
-        <div class="alert alert-danger" role="alert">
-          I'm sorry, but to see the starships you must be logged in.
-        </div>
+
         <div class="form-group pb-3">
           <label for="fName" class="fw-bold">First Name</label>
           <input class="form-control" type="text" formControlName="fName"

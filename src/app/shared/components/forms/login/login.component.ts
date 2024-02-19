@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import {
   ActivatedRoute,
+  NavigationEnd,
   Router,
   RouterLink,
   RouterOutlet,
@@ -17,6 +18,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../../../services/authservice.service'; // Asegúrate de que la ruta sea correcta
+import { Subscription, filter } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -34,6 +36,10 @@ import { AuthService } from '../../../../services/authservice.service'; // Aseg�
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
+  // Propiedad para controlar la visibilidad del mensaje de alerta
+  showAlertMessage: boolean = false;
+  private queryParamsSubscription!: Subscription;
+
   constructor(
     private http: HttpClient, // Asume que ya lo tienes inyectado para hacer las llamadas HTTP
     private authService: AuthService, // Servicio de autenticación
@@ -43,6 +49,14 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Suscripción a cambios en los parámetros de consulta
+    this.queryParamsSubscription = this.route.queryParams.subscribe(
+      (params) => {
+        const returnUrl = params['returnUrl'];
+        // Actualiza showAlertMessage basado en la presencia y el valor de returnUrl
+        this.showAlertMessage = returnUrl === '/starships';
+      }
+    );
     this.loginForm = this.formBuilder.group({
       /* fName: [
         '',
@@ -64,6 +78,13 @@ export class LoginComponent implements OnInit {
         ],
       ],
     });
+  }
+
+  // Asegúrate de limpiar la suscripción cuando el componente se destruya
+  ngOnDestroy(): void {
+    if (this.queryParamsSubscription) {
+      this.queryParamsSubscription.unsubscribe();
+    }
   }
 
   /* verificación [class.is-invalid] de bootstrap. Una variable booleana utilizada para rastrear si el formulario ha sido enviado. Esto ayuda a controlar la visualización de los mensajes de validación */
@@ -112,5 +133,20 @@ export class LoginComponent implements OnInit {
   // limpiar formulario de registro
   registerFormClean() {
     this.loginForm.reset();
+  }
+
+  updateAlertMessageVisibility() {
+    const currentUrl = this.router.url;
+    const returnUrl = this.route.snapshot.queryParams['returnUrl'];
+
+    // El mensaje debe mostrarse solo si estamos en /login con el parámetro returnUrl específico
+    this.showAlertMessage =
+      currentUrl.startsWith('/login') && returnUrl === '/starships';
+    console.log(
+      'Current URL:',
+      currentUrl,
+      'Show Alert:',
+      this.showAlertMessage
+    ); // Para depuración
   }
 }
